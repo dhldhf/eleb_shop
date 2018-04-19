@@ -11,6 +11,13 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+//Route::get('/', function () {
+//    return view('welcome');
+//});
+Route::resource('categories', 'CategoryController');
+
+Route::resource('businesses', 'BusinessController');
+
+Route::get('login', 'BusinessController@login')->name('login');
+Route::post('login', 'BusinessController@add_login')->name('login');
+Route::delete('logout', 'BusinessController@logout')->name('logout');
