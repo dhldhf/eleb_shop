@@ -18,6 +18,9 @@ Route::resource('categories', 'CategoryController');
 
 Route::resource('businesses', 'BusinessController');
 
-Route::get('login', 'BusinessController@login')->name('login');
-Route::post('login', 'BusinessController@add_login')->name('login');
-Route::delete('logout', 'BusinessController@logout')->name('logout');
+Route::get('login', 'SessionsController@create')->name('login');
+Route::post('login', 'SessionsController@store')->name('login');
+Route::delete('logout', 'SessionsController@destroy')->name('logout');
+
+Route::post('businesses/{business}/add_pass', 'BusinessController@add_pass')->name('add_pass');
+Route::get('businesses/{business}/pass', 'BusinessController@pass')->name('pass');
