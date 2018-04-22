@@ -8,6 +8,10 @@ class Food extends Model
 {
     public $timestamps = false;
     protected $fillable = [
-        'food_name', 'food_img', 'tips', 'satisfy_count', 'rating_count', 'description','food_price', 'rating', 'month_sales', 'satisfy_rate', 'foods_code', 'high_or_now','food_id','food_id',
+        'food_name', 'goods_img', 'tips', 'satisfy_count', 'rating_count', 'description','food_price', 'rating', 'month_sales', 'satisfy_rate', 'foods_code', 'high_or_now','food_id','shop_id',
     ];
+    public function food_category()
+    {
+        return $this->belongsTo(Food_category::class,'food_id');
+    }
 }

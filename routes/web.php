@@ -24,3 +24,7 @@ Route::delete('logout', 'SessionsController@destroy')->name('logout');
 
 Route::post('businesses/{business}/add_pass', 'BusinessController@add_pass')->name('add_pass');
 Route::get('businesses/{business}/pass', 'BusinessController@pass')->name('pass');
+
+Route::resource('food_category', 'Food_categoryController');
+
+Route::resource('foods', 'FoodController');

@@ -39,7 +39,7 @@ class SessionsController extends Controller
             session()->flash('success','登录成功');
             return redirect()->intended('businesses');
         }else{
-            session()->flash('danger','登录失败,用户名或密码错误');
+            session()->flash('danger','登录失败,用户名或密码错误或未通过审核');
             return redirect()->back();
         }
     }
