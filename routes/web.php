@@ -31,6 +31,8 @@ Route::resource('foods', 'FoodController');
 
 Route::post('/upload', 'UploadController@upload');
 
+Route::resource('activities', 'ActivityController');
+
 //Route::get('/oos', function()
 //{
 //    //D:\www\eleb_shop\storage\app\public\businesses\2zJMqJd1MKJ6pDBhx7CC4V3rj3s1TP4RCNhACsfT.jpeg
