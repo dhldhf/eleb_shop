@@ -15,7 +15,7 @@
             <input type="number" class="form-control" id="价格" placeholder="价格" name="food_price" value="{{ $food->food_price }}">
         </div>
         <div class="form-group">
-            <label for="">商家图片</label>
+            <label for="">食品图片</label>
             <img src="{{ $food->goods_img }}" alt="">
             <input type="file" name="goods_img">
         </div>

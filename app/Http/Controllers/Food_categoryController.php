@@ -11,7 +11,7 @@ class Food_categoryController extends Controller
 {
     public function index()
     {
-       $shop_id =  Auth::user()->id;
+       $shop_id =  Auth::user()->information_id;
         $food_categories = Food_category::where('shop_id', '=', $shop_id)->paginate(3);
 //        var_dump($food_categories);die;
 //        $food_categories = Food_category::paginate();
@@ -35,7 +35,7 @@ class Food_categoryController extends Controller
             'description.required'=>'描述不能为空',
         ]
         );
-        $shop_id = Auth::user()->id;
+        $shop_id = Auth::user()->information_id;
         $name = $request->name;
         $food_categories = DB::select ("select count(*) as num from `food_categories` where shop_id ={$shop_id} and `name`='{$name}'");
 //        var_dump($food_categories[0]->num);die;
@@ -72,7 +72,7 @@ class Food_categoryController extends Controller
                 'description.required'=>'描述不能为空',
             ]
         );
-        $shop_id = Auth::user()->id;
+        $shop_id = Auth::user()->information_id;
         $name = $request->name;
         $food_categories = DB::select ("select count(*) as num from `food_categories` where shop_id ={$shop_id} and `name`='{$name}'");
         if ($food_categories[0]->num == 0){
