@@ -12,7 +12,7 @@
         </div>
         <div class="form-group">
             <label for="">描述</label>
-            <input type="text" class="form-control" id="分类描述" placeholder="分类描述" name="description" value="{{old('description')}}">
+            <input type="text" class="form-control" id="描述" placeholder="描述" name="description" value="{{old('description')}}">
         </div>
         <div class="form-group">
             <label for="">价格</label>

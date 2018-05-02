@@ -33,16 +33,10 @@ Route::post('/upload', 'UploadController@upload');
 
 Route::resource('activities', 'ActivityController');
 
-//Route::get('/oos', function()
-//{
-//    //D:\www\eleb_shop\storage\app\public\businesses\2zJMqJd1MKJ6pDBhx7CC4V3rj3s1TP4RCNhACsfT.jpeg
-//    $client = App::make('aliyun-oss');
-//    try{
-//        $client->uploadFile(getenv('OSS_BUCKET'), 'public\businesses\2zJMqJd1MKJ6pDBhx7CC4V3rj3s1TP4RCNhACsfT.jpeg', Storage_path('app\public\businesses\2zJMqJd1MKJ6pDBhx7CC4V3rj3s1TP4RCNhACsfT.jpeg'));
-//        echo '上传成功';
-//    } catch(\OSS\Core\OssException $e) {
-//        echo "上传失败";
-//        printf($e->getMessage() . "\n");
-//        return;
-//    }
-//});
+Route::resource('orders', 'OrderController');
+
+Route::get('orders/{order}/ship','OrderController@ship')->name('ship');
+
+Route::get('ordersjinri','OrderController@jinri')->name('jinri');
+
+Route::get('orders_month','OrderController@month')->name('month');

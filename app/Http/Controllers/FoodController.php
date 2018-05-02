@@ -52,29 +52,18 @@ class FoodController extends Controller
         $shop_id = Auth::user()->information_id;
         $food_name = $request->food_name;
         $food_id = $request->food_id;
-        $foods = DB::select ("select count(*) as num from `foods` where shop_id={$shop_id} and food_id={$food_id} and `food_name`='{$food_name}'");
-//        var_dump($foods);die;
-        //$fileName = $request->file('goods_img')->store('public/foods');
-        //$file = url(Storage::url($fileName));
-//        var_dump($fileName);die;
-//        $client = App::make('aliyun-oss');
-//        try{
-//            $client->uploadFile(getenv('OSS_BUCKET'), $fileName, Storage_path('app/'.$fileName));
-////            echo '上传成功';
-//        } catch(\OSS\Core\OssException $e) {
-//            echo "上传失败";
-//            printf($e->getMessage() . "\n");
-//        }
+        $foods = DB::select ("select count(*) as num from `foods` where shop_id={$shop_id} and food_id={$food_id} and `goods_name`='{$food_name}'");
+
         if ($foods[0]->num == 0){
             Food::create(
                 [
-                    'food_name'=>$request->food_name,
+                    'goods_name'=>$request->food_name,
                     'description'=>$request->description,
                     'tips'=>$request->tips,
                     'goods_img'=>$request->img,
-                    'food_price'=>$request->food_price,
+                    'goods_price'=>$request->food_price,
                     'food_id'=>$request->food_id,
-                    'shop_id'=>Auth::user()->id,
+                    'shop_id'=>Auth::user()->information_id,
                 ]
             );
         }else{

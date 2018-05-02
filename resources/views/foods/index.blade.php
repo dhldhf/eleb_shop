@@ -14,10 +14,10 @@
         </tr>
         @foreach($foods as $food)
             <tr data-id="{{ $food->id }}">
-                <td>{{$food->id}}</td>
+                <td>{{$food->goods_id}}</td>
                 <td><img src="{{ $food->goods_img}}" alt=""></td>
-                <td>{{$food->food_name}}</td>
-                <td>{{$food->food_price}}</td>
+                <td>{{$food->goods_name}}</td>
+                <td>{{$food->goods_price}}</td>
                 <td>{{$food->description}}</td>
                 <td>{{$food->tips}}</td>
                 <td>{{$food->food_category->name}}</td>
