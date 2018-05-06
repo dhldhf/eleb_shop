@@ -20,7 +20,7 @@
         @endforeach
     </table>
     <div>{{ $orders->links() }}</div>
-    <div><a href="{{ route('jinri') }}" class="btn btn-primary">今日订单</a></div>
+    <div><a href="{{ route('today') }}" class="btn btn-primary">今日订单</a></div>
     <br/>
-    <div><a href="{{ route('month') }}" class="btn btn-success">这月订单</a></div>
+    <div><a href="{{ route('food_today') }}" class="btn btn-primary">菜品今日订单</a></div>
 @stop

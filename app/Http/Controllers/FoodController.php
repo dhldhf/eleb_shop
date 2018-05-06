@@ -15,9 +15,9 @@ class FoodController extends Controller
     public function index()
     {
         $shop_id =  Auth::user()->information_id;
-//        var_dump($shop_id);die;
         $foods = Food::where('shop_id', '=', $shop_id)->paginate(3);
-//       $foods = Food::paginate(3);
+//        echo '<pre/>';
+//        var_dump($foods);die;
        return view('foods.index',compact('foods'));
     }
 

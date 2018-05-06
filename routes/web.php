@@ -37,6 +37,10 @@ Route::resource('orders', 'OrderController');
 
 Route::get('orders/{order}/ship','OrderController@ship')->name('ship');
 
-Route::get('ordersjinri','OrderController@jinri')->name('jinri');
+Route::get('orders_today','OrderController@today')->name('today');
 
-Route::get('orders_month','OrderController@month')->name('month');
+//Route::post('orders_jiti', 'OrderController@orders_jiti')->name('orders_jiti');
+
+Route::get('food_today','Order_goodsController@food_today')->name('food_today');
+
+Route::resource('events', 'EventsController');

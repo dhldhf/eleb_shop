@@ -15,6 +15,6 @@ class Order extends Model
         return $this->belongsTo(Information::class,'shop_id');
     }
     protected $fillable = [
-        'order_status',
+        'order_status','created_at','updated_at',
     ];
 }
