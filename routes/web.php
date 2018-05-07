@@ -44,3 +44,5 @@ Route::get('orders_today','OrderController@today')->name('today');
 Route::get('food_today','Order_goodsController@food_today')->name('food_today');
 
 Route::resource('events', 'EventsController');
+
+Route::get('events/{event}/winning','EventsController@winning')->name('winning');
