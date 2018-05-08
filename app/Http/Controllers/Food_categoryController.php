@@ -9,6 +9,12 @@ use Illuminate\Support\Facades\DB;
 
 class Food_categoryController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth', [
+            'except' => []
+        ]);
+    }
     public function index()
     {
        $shop_id =  Auth::user()->information_id;

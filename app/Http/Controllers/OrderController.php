@@ -10,6 +10,12 @@ use Illuminate\Support\Facades\Redis;
 
 class OrderController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth', [
+            'except' => []
+        ]);
+    }
     public function index()
     {
 //        var_dump(Auth::user()->information_id);die;

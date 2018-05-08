@@ -12,6 +12,12 @@ use Illuminate\Support\Facades\Storage;
 
 class FoodController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth', [
+            'except' => []
+        ]);
+    }
     public function index()
     {
         $shop_id =  Auth::user()->information_id;
