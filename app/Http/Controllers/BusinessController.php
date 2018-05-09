@@ -21,11 +21,13 @@ class BusinessController extends Controller
             'except' => [ 'create', 'store']
         ]);
     }
+
     public function index()
     {
        $businesses =  Business::paginate(3);
         return view('businesses.index',compact('businesses'));
     }
+
     public function create()
     {
         $categories = Category::all();
@@ -61,6 +63,8 @@ class BusinessController extends Controller
             ]);
 //        var_dump($request->brand,$request->bao);die;
         DB::transaction(function ()use($request){
+            $fileName = $request->file('logo')->store('public/businesses');
+            $file = url(Storage::url($fileName));
         $information_id = Information::create(
             [
                 'shop_name'=>$request->name,
@@ -70,10 +74,10 @@ class BusinessController extends Controller
                 'zhun'=>$request->zhun,
                 'fengniao'=>$request->fengniao,
                 'piao'=>$request->piao,
+                'shop_img'=>$file,
             ]);
 //        var_dump($information_id->id);die;
-            $fileName = $request->file('logo')->store('public/businesses');
-            $file = url(Storage::url($fileName));
+
         Business::create(
                 [
                     'name'=>$request->name,
@@ -90,6 +94,7 @@ class BusinessController extends Controller
         session()->flash('success','注册成功');
         return redirect()->route('businesses.index');
         }
+
     public function edit(Business $business)
     {
             return view('businesses.edit',compact('business'));
@@ -129,14 +134,19 @@ class BusinessController extends Controller
                 'email'=>$request->email,
             ]
         );
+        DB::table('information')
+            ->where('id', $business->information_id)
+            ->update(['shop_img' => $file]);
         session()->flash('success','修改成功');
         return redirect()->route('businesses.index');
         }
 
     public function destroy(Business $business)
     {
+//        dd($business->information_id);
         $business->delete();
-        }
+        DB::table('information')->where('id','=',$business->information_id)->delete();
+    }
 
     public function pass(Business $business)
     {

@@ -4,7 +4,7 @@
     <form method="post" action="{{route('foods.update',['food'=>$food])}}" enctype="multipart/form-data">
         <div class="form-group">
             <label for="">食品名称</label>
-            <input type="text" class="form-control" id="食品名称" placeholder="食品名称" name="food_name" value="{{ $food->food_name }}">
+            <input type="text" class="form-control" id="食品名称" placeholder="食品名称" name="food_name" value="{{ $food->goods_name }}">
         </div>
         <div class="form-group">
             <label for="">描述</label>
@@ -12,7 +12,7 @@
         </div>
         <div class="form-group">
             <label for="">价格</label>
-            <input type="number" class="form-control" id="价格" placeholder="价格" name="food_price" value="{{ $food->food_price }}">
+            <input type="number" class="form-control" id="价格" placeholder="价格" name="food_price" value="{{ $food->goods_price }}">
         </div>
         <div class="form-group">
             <label for="">食品图片</label>

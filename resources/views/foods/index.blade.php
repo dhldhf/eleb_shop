@@ -13,16 +13,16 @@
             <th>操作</th>
         </tr>
         @foreach($foods as $food)
-            <tr data-id="{{ $food->id }}">
+            <tr data-id="{{ $food->goods_id }}">
                 <td>{{$food->goods_id}}</td>
-                <td><img src="{{ $food->goods_img}}" alt=""></td>
+                <td><img src="{{ $food->goods_img }}" alt="" width="100px" height="100px"></td>
                 <td>{{$food->goods_name}}</td>
                 <td>{{$food->goods_price}}</td>
                 <td>{{$food->description}}</td>
                 <td>{{$food->tips}}</td>
                 <td>{{$food->food_category->name}}</td>
                 <td>
-                    <a href="{{ route('foods.edit',['food'=>$food]) }}" class="btn btn-sm btn-warning">编辑</a>
+                    <a href="{{ route('foods.edit',compact('food')) }}" class="btn btn-sm btn-warning">编辑</a>
                     <button class="btn btn-danger">删除</button>
                 </td>
             </tr>

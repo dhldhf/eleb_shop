@@ -12,7 +12,7 @@
             <tr data-id="{{ $category->id }}">
                 <td>{{$category->id}}</td>
                 <td>{{$category->name}}</td>
-                <td><img src="{{ Storage::url($category->logo)}}" alt="" width="100px" height="100px"></td>
+                <td><img src="{{ $category->logo}}" alt="" width="100px" height="100px"></td>
                 <td>
                     <a href="{{ route('categories.edit',['category'=>$category]) }}" class="btn btn-sm btn-warning">编辑</a>
                     <a href="{{ route('categories.show',['category'=>$category]) }}" class="btn btn-sm btn-primary">查看</a>

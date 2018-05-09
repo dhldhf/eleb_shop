@@ -87,6 +87,7 @@ class FoodController extends Controller
 
     public function edit(Food $food)
     {
+
         $shop_id =  Auth::user()->information_id;
         $food_categories = DB::table('food_categories')->where('shop_id', '=', $shop_id)->get();
         return view('foods.edit',compact('food','food_categories'));
@@ -118,11 +119,11 @@ class FoodController extends Controller
 //        var_dump($request->food_id);die;
         $food->update(
             [
-                'food_name'=>$request->food_name,
+                'goods_name'=>$request->food_name,
                 'description'=>$request->description,
                 'tips'=>$request->tips,
                 'goods_img'=>$file,
-                'food_price'=>$request->food_price,
+                'goods_price'=>$request->food_price,
                 'food_id'=>$request->food_id,
             ]
         );
