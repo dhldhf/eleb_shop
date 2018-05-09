@@ -9,7 +9,7 @@ class Business extends Authenticatable
 {
     public $timestamps = false;
     protected $fillable = [
-        'name', 'logo','phone','password','categories_id','information_id',
+        'name', 'logo','phone','password','categories_id','information_id','email',
     ];
 
     public function category()

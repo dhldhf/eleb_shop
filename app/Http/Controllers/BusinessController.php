@@ -42,6 +42,7 @@ class BusinessController extends Controller
              'password'=>'required|min:3|confirmed',
              'captcha'=>'required|captcha',
             'phone'=>'required|min:11|max:12',
+            'email'=>'required|email',
         ],
             [
             'name.required'=>'商家名称不能为空',
@@ -55,6 +56,8 @@ class BusinessController extends Controller
             'phone.min'=>'电话号码不能小于11位',
             'phone.max'=>'电话号码不能超过12位',
             'phone.required'=>'电话号码不能为空',
+            'email.required'=>'邮箱不能为空',
+            'email.email'=>'邮箱格式不正确',
             ]);
 //        var_dump($request->brand,$request->bao);die;
         DB::transaction(function ()use($request){
@@ -79,6 +82,7 @@ class BusinessController extends Controller
                     'password'=>bcrypt($request->password),
                     'categories_id'=>$request->categories_id,
                     'information_id'=>$information_id->id,
+                    'email'=>$request->email,
                 ]
             );
         });
@@ -99,6 +103,7 @@ class BusinessController extends Controller
                 'logo'=>'required|image',
                 'password'=>'required|min:3|confirmed',
                 'phone'=>'required|min:11|max:12',
+                'email'=>'required|email',
             ],
             [
                 'name.required'=>'商家名称不能为空',
@@ -110,6 +115,8 @@ class BusinessController extends Controller
                 'phone.min'=>'电话号码不能小于11位',
                 'phone.max'=>'电话号码不能超过12位',
                 'phone.required'=>'电话号码不能为空',
+                'email.required'=>'邮箱不能为空',
+                'email.email'=>'邮箱格式不正确',
             ]);
         $fileName = $request->file('logo')->store('public/businesses');
         $business->update(
@@ -118,6 +125,7 @@ class BusinessController extends Controller
                 'logo'=>$fileName,
                 'phone'=>$request->phone,
                 'password'=>bcrypt($request->password),
+                'email'=>$request->email,
             ]
         );
         session()->flash('success','修改成功');
