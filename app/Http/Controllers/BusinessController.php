@@ -119,10 +119,11 @@ class BusinessController extends Controller
                 'email.email'=>'邮箱格式不正确',
             ]);
         $fileName = $request->file('logo')->store('public/businesses');
+        $file = url(Storage::url($fileName));
         $business->update(
             [
                 'name'=>$request->name,
-                'logo'=>$fileName,
+                'logo'=>$file,
                 'phone'=>$request->phone,
                 'password'=>bcrypt($request->password),
                 'email'=>$request->email,

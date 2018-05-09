@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Category;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 
 class CategoryController extends Controller
 {
@@ -38,10 +39,11 @@ class CategoryController extends Controller
             ]
         );
         $fileName = $request->file('logo')->store('public/categories');
+        $file = url(Storage::url($fileName));
         Category::create(
             [
                 'name'=>$request->name,
-                'logo'=>$fileName,
+                'logo'=>$file,
             ]
         );
         session()->flash('success','添加成功');
@@ -67,10 +69,11 @@ class CategoryController extends Controller
             ]
         );
         $fileName = $request->file('logo')->store('public/categories');
+        $file = url(Storage::url($fileName));
         $category->update(
             [
                 'name'=>$request->name,
-                'logo'=>$fileName,
+                'logo'=>$file,
             ]
         );
         session()->flash('success','修改成功');
